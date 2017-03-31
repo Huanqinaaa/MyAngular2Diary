@@ -1,7 +1,24 @@
-
 import { Component } from '@angular/core';
+
 @Component({
-  selector: 'my-app',
-  template: '<h1>This is my Angular2 application, I want to make a diary !</h1>'
+  selector: 'eye-homepage',
+  templateUrl: 'temp/introduce.html'
 })
-export class AppComponent { }
+@Component({
+  selector: 'eye-create',
+  templateUrl: 'temp/create.html'
+})
+
+@Component({
+  selector: 'eye-detail',
+  templateUrl: 'temp/detail.html'
+})
+@Component({
+  selector: 'eye-list',
+  templateUrl: 'temp/list.html'
+})
+//Only the last @Component will be chosen
+export class AppComponent {
+  // do something
+
+}
