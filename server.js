@@ -57,7 +57,10 @@ app.post('/eye',function (req,res){ // save the data what you input
         })
     })
 });
+<<<<<<< HEAD
 
 app.listen(8004,function(){
     console.log("http://localhost:8004");
 })
+=======
+>>>>>>> 52b2c923edf72b33fe30eaf51619ce7427f032a7
