@@ -8,29 +8,40 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var AppComponent = (function () {
-    //Only the last @Component will be chosen
     function AppComponent() {
+        this.create = false;
+        this.detailPage = false;
     }
+    AppComponent.prototype.showCreatePage = function () {
+        this.create = true;
+    };
+    AppComponent.prototype.createBackToListPage = function () {
+        this.create = false;
+    };
+    AppComponent.prototype.submit = function () {
+        this.create = false;
+    };
+    AppComponent.prototype.goDetail = function () {
+        this.detailPage = true;
+    };
+    AppComponent.prototype.detailBackToListPage = function () {
+        this.detailPage = false;
+    };
     return AppComponent;
 }());
 AppComponent = __decorate([
     core_1.Component({
-        selector: 'eye-homepage',
-        templateUrl: 'temp/introduce.html'
-    }),
-    core_1.Component({
-        selector: 'eye-create',
-        templateUrl: 'temp/create.html'
-    }),
-    core_1.Component({
-        selector: 'eye-detail',
-        templateUrl: 'temp/detail.html'
-    }),
-    core_1.Component({
         selector: 'eye-list',
         templateUrl: 'temp/list.html'
     })
-    //Only the last @Component will be chosen
 ], AppComponent);
 exports.AppComponent = AppComponent;
+var http_1 = require("angular2/http");
+var params = new http_1.URLSearchParams();
+params.set('name', 'huge');
+console.log(params.toString()); // name=huge
+this.http.get(StaticSettings.BASE_URL, { search: params }).subscribe();
+this.http.post(url, params).subscribe(function (res) {
+    console.log(res);
+});
 //# sourceMappingURL=app.component.js.map

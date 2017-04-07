@@ -17,20 +17,25 @@ function getInfo(callback){
         }
     });
 }
+
 function setInfo(data,callback){
     fs.writeFile('./eye.json',JSON.stringify(data),callback);
 }
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname,'/')));
-app.get('/',function (req,res){
+app.get('/',function (req,res){ // get a list
     fs.createReadStream('./index.html').pipe(res); 
-app.get('/eye',function (req,res){
+});  
+
+/*app.get('/eye',function (req,res){ 
     getInfo(function (data){
         res.send(data);
     });
-});
-app.get('/eye/:id',function (req,res){
+});*/
+
+app.get('/eye/:id',function (req,res){ // get one 
     var id= req.params.id;
     getInfo(function (data){
         var eye = data.find(function (item){
@@ -41,7 +46,8 @@ app.get('/eye/:id',function (req,res){
         })
     })
 });
-app.post('/eye',function (req,res){ 
+
+app.post('/eye',function (req,res){ // save the data what you input
     var eye = req.body;
     getInfo(function (data){
         eye.id = data.length ? data[data.length - 1].id + 1 : 1;
@@ -51,3 +57,7 @@ app.post('/eye',function (req,res){
         })
     })
 });
+
+app.listen(8004,function(){
+    console.log("http://localhost:8004");
+})

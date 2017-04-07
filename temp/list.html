@@ -1,3 +1,7 @@
+
+<div class="container">
+
+    <div [hidden]="create || detailPage">
 <div class="nav">
       <div class="container-fluid">
           <div>
@@ -10,7 +14,7 @@
 <div class="row">
     <div class="col-sm-2" ng-repeat="eye in eyes track by $index">
         <div class="text-center" style="background-color: lightblue;">
-              <span class="col-sm-offset-6" ng-click="goDetail(eye.id)">03.31.2017     80</span>
+              <span class="col-sm-offset-6" (click)="goDetail()">03.31.2017     80</span>
               <span class="col-sm-offset-6" ng-click="goDetail(eye.id)">03.30.2017     80</span>
               <span class="col-sm-offset-6" ng-click="goDetail(eye.id)">03.29.2017     80</span>
               <span class="col-sm-offset-6" ng-click="goDetail(eye.id)">03.28.2017     80</span>
@@ -37,12 +41,107 @@
         </div>
     </div>
 </div>
-<div>
-	<span>Total expenses:</span>
-	<span>1000</span>
-	<span>Mood score:</span>
-	<span>80</span>
+  <div>
+  <span>Total expenses:</span>
+  <span>1000</span>
+  <span>Mood score:</span>
+  <span>80</span>
+  </div>
+  <div>
+    <button (click)="showCreatePage()">Create</button>
+  </div>
+     </div>
+
+<div [hidden]="!create">
+  <div class="nav">
+      <div class="container-fluid">
+          <div>
+              <ul class="nav navbar-nav">
+                <li><button (click)="createBackToListPage()">Back</button><span>Qinhuan</span></li>
+                <li></li>
+              </ul>
+          </div>
+      </div>
+ </div>
+
+<form class="form-horizontal" style="margin-top: 30px">
+    <div>
+        EyE on :
+    </div>
+    <div class="form-group">
+        <label for="date" class="control-label col-md-3">Date</label>
+        <div class="col-md-8">
+            <input class="form-control" type="text" id="date" placeholder="Please input date Month/Date/Year" ng-model="eye.name">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="spend" class="control-label col-md-3">Expenditure</label>
+        <div class="col-md-8">
+            <input class="form-control" type="text" id="spend" placeholder="Please input your today's expense" ng-model="eye.name">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="content" class="control-label col-md-3">Your Today</label>
+        <div class="col-md-8">
+            <textarea class="form-control" name="info" id="content" cols="30" rows="10" placeholder="Please record what you have done today briefly !" ng-model="eye.info"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-3">Ended with</label>
+        <div class="col-md-8">
+            <select>
+                <option value="Score">Score</option>
+                <option value="0  Breakdown">0  Breakdown</option>
+                <option value="10  Angry">10  Angry</option>
+                <option value="20  Sorrowful">20  Sorrowful</option>
+                <option value="30  Upset">30  Upset</option>
+                <option value="40  Anxious">40  Anxious</option>
+                <option value="50  Lost">50  Lost</option>
+                <option value="60  So-so">60  So-so</option>
+                <option value="70  Contented">70  Contented</option>
+                <option value="80  Happy">80  Happy</option>
+                <option value="90  Excited">90  Excited</option>
+                <option value="100 Ecstatic">100 Ecstatic</option>            
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-3 col-md-offset-3">
+            <button class="btn btn-success" (click)="submit()">Submit</button>
+        </div>
+    </div>
+</form>
 </div>
-<div>
-    <button><a href="#!/eye/create">Create</a></button>
+
+  <div [hidden]="!detailPage">
+  <div class="nav">
+      <div class="container-fluid">
+          <div>
+              <ul class="nav navbar-nav">
+                <li><button (click)="detailBackToListPage()">Back</button><span>Qinhuan</span></li>
+                <li></li>
+              </ul>
+          </div>
+      </div>
+ </div>
+
+ <form class="form-horizontal" style="margin-top: 30px">
+    <div class="form-group">
+        <span class="control-label col-md-3">03.31.2017</span>
+    </div>
+    <div class="form-group">
+        <span class="control-label col-md-3">Expenditure:100</span>
+    </div>
+    <div class="form-group">
+        <span class="control-label col-md-3">Your Today: I learn something new</span>
+    </div>
+    <div class="form-group">
+        <span class="control-label col-md-3">Ended with : 80</span>
+    </div>
+</form>
 </div>
+
+</div>
+
+
+
