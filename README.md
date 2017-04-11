@@ -12,3 +12,5 @@ node server.js
 ```
 http://localhost:8004
 ```
+
+## note: npm start still has problems, lite-server is not good.
