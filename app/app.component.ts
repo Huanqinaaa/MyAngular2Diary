@@ -31,13 +31,4 @@ export class AppComponent {
 
 }
 
-import { Http, Response, URLSearchParams } from 'angular2/http';
-let params = new URLSearchParams();
-params.set('name', 'huge');
-console.log(params.toString()) // name=huge
-this.http.get(StaticSettings.BASE_URL, { search: params}).subscribe(
-       
-);
-this.http.post(url, params).subscribe(res=> {
-    console.log(res);
-});
+
